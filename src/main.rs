@@ -57,12 +57,15 @@ fn main() -> ! {
     let mut led_pin = pins.led.into_push_pull_output();
 
     loop {
-        info!("on!");
-        led_pin.set_high().unwrap();
-        delay.delay_ms(500);
-        info!("off!");
-        led_pin.set_low().unwrap();
-        delay.delay_ms(500);
+        for _ in 0..3 {
+            led_pin.set_high().unwrap();
+            delay.delay_ms(100);
+
+            led_pin.set_low().unwrap();
+            delay.delay_ms(100);
+        }
+
+        delay.delay_ms(400);
     }
 }
 
